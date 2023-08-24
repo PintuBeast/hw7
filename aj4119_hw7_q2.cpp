@@ -1,9 +1,53 @@
 #include<iostream>
 #include<string>
 using namespace std;
+
+
 const int BIG_A=65,SMALL_A=97, SMALL_Z=97,BIG_Z=122, NUM_ALPHABETS=26;
 int small[NUM_ALPHABETS], caps[NUM_ALPHABETS];
+
+void getLetterDistribution(string line, int letterArray[]);
+
+
+bool isAnagram(string line1, string line2);
+bool isAnagram(string line1, string line2)
+{
+    bool isAnagram=true;
+    int letterArray1[NUM_ALPHABETS],letterArray2[NUM_ALPHABETS];
+    getLetterDistribution(line1,letterArray1);
+    getLetterDistribution(line2,letterArray2);
+
+    for(int i =0;i<NUM_ALPHABETS;i++)
+    {
+        if(letterArray1[i]!=letterArray2[i])
+        {
+            isAnagram=false;
+            break;
+        }
+
+    }
+    return isAnagram;
+}
 void initialiseLettersArray();
+void identifyLetters(string word);
+
+void parseWords(string line);
+
+void getLetterDistribution(string line, int letterArray[])
+{
+    initialiseLettersArray();
+    parseWords(line);
+    for(int i=0;i<NUM_ALPHABETS;i++)
+    {
+        letterArray[i]=small[i]+caps[i];
+    }
+
+}
+
+
+
+
+
 void initialiseLettersArray()
 {
     for(int i=0;i<NUM_ALPHABETS;i++)
@@ -14,11 +58,10 @@ void initialiseLettersArray()
 
 }
 
-void identifyLetters(string word);
+
 void identifyLetters(string word)
 {
     int wordLength= word.length();
-   // cout<<"word: "<<word<<"\n";
     int asciVal;
     for(int i=0;i<wordLength;i++)
     {
@@ -37,22 +80,9 @@ void identifyLetters(string word)
     
 }
 
-void printLetters();
-void printLetters()
-{
-    for(int i=0;i<NUM_ALPHABETS;i++)
-    {
-        if(small[i]+caps[i]>0)
-        {
-            cout<< (char) (SMALL_A + i) <<"\t"<< small[i]+caps[i]<< "\n";
-        }
-    }
 
 
-}
-
-int parseWords(string line);
-int parseWords(string line)
+void parseWords(string line)
 {
     int stringLength= line.length(),wordCount=0;
     bool isWord=false;
@@ -89,18 +119,31 @@ int parseWords(string line)
 
         }
     }
-    return wordCount;
+    
 
 }
 
+
+
+
 int main()
 {
-    string line;
-    cout<<"Please enter a string:\n";
-    getline(cin,line);
-    void initialiseLettersArray()
-    int wordCount= parseWords(line);
-    cout<<wordCount<< " words\n";
-    printLetters();
+    string line1,line2;
+    cout<<"Please enter string-1:\n";
+    getline(cin,line1);
+    cout<<"Please enter string-2:\n";
+    getline(cin,line2);
+    bool isAna ;
+    isAna = isAnagram(line1,line2);
+    if(isAna == true)
+    {
+        cout<<"The two strings are Anagrams.";
+    }
+    else
+    {
+        cout<<"The two strings are Not Anagrams.";
+
+    }
+
     return 0;
 }

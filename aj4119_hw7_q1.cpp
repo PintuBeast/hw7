@@ -98,7 +98,7 @@ int main()
     string line;
     cout<<"Please enter a string:\n";
     getline(cin,line);
-    void initialiseLettersArray()
+    void initialiseLettersArray();
     int wordCount= parseWords(line);
     cout<<wordCount<< " words\n";
     printLetters();

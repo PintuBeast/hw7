@@ -6,8 +6,8 @@ const int TWO=2, ONE=1;
 void printArray(int arr[],  int arrSize);
 void oddsKeepEvensFlip(int arr[], int arrSize)
 {
-    int *oddArray=new int(arrSize);
-    int *evenArray=new int(arrSize);
+    int *oddArray=new int[arrSize];
+    int *evenArray=new int[arrSize];
     for(int i=0;i<arrSize;i++)
     {
         oddArray[i]=TWO;
@@ -55,7 +55,7 @@ int main()
     int arrSize;
     cout<<"Enter the array Size: ";
     cin>>arrSize;
-    int* arr=new int(arrSize);
+    int* arr=new int[arrSize];
     cout<<"Enter the array of integers: \n";
     for(int i=0;i<arrSize;i++)
     {

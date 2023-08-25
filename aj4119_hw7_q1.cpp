@@ -1,15 +1,15 @@
 #include<iostream>
 #include<string>
 using namespace std;
-const int BIG_A=65,SMALL_A=97, SMALL_Z=97,BIG_Z=122, NUM_ALPHABETS=26;
+const int BIG_A = 65, SMALL_A = 97, SMALL_Z = 97, BIG_Z = 122, NUM_ALPHABETS = 26;
 int small[NUM_ALPHABETS], caps[NUM_ALPHABETS];
 void initialiseLettersArray();
 void initialiseLettersArray()
 {
-    for(int i=0;i<NUM_ALPHABETS;i++)
+    for(int i = 0 ; i < NUM_ALPHABETS ; i++)
     {
-        caps[i]=0; 
-        small[i]=0;
+        caps[i] = 0; 
+        small[i] = 0;
     }
 
 }
@@ -17,19 +17,19 @@ void initialiseLettersArray()
 void identifyLetters(string word);
 void identifyLetters(string word)
 {
-    int wordLength= word.length();
+    int wordLength = word.length();
    // cout<<"word: "<<word<<"\n";
     int asciVal;
-    for(int i=0;i<wordLength;i++)
+    for(int i = 0 ; i < wordLength ; i++)
     {
         asciVal = (int) word[i];
-        if(asciVal>=97)
+        if(asciVal >= 97)
         {
-            small[asciVal-SMALL_A]++;
+            small[asciVal - SMALL_A]++;
         }
         else
         {
-            caps[asciVal-SMALL_A]++;
+            caps[asciVal - SMALL_A]++;
 
         }
 
@@ -40,11 +40,11 @@ void identifyLetters(string word)
 void printLetters();
 void printLetters()
 {
-    for(int i=0;i<NUM_ALPHABETS;i++)
+    for(int i = 0 ; i < NUM_ALPHABETS ; i++)
     {
-        if(small[i]+caps[i]>0)
+        if(( small[i] + caps[i] ) > 0)
         {
-            cout<< (char) (SMALL_A + i) <<"\t"<< small[i]+caps[i]<< "\n";
+            cout<< (char) (SMALL_A + i) <<"\t"<< (small[i] + caps[i])<< "\n";
         }
     }
 
@@ -54,17 +54,17 @@ void printLetters()
 int parseWords(string line);
 int parseWords(string line)
 {
-    int stringLength= line.length(),wordCount=0;
-    bool isWord=false;
-    string word="";
+    int stringLength = line.length(),wordCount = 0;
+    bool isWord = false;
+    string word = "";
     
     //cout<<"string Length: "<<stringLength<<"\n";
-    for(int i=0;i<stringLength;i++)
+    for(int i = 0 ; i < stringLength ; i++)
     {   int x = (int) line[i];
         if( (x >= BIG_A && x <= BIG_Z) || (x >= SMALL_A && x <= SMALL_Z) )
         {
-            isWord=true;
-            word+=x;
+            isWord = true;
+            word += x;
         }
         else
         {
@@ -72,8 +72,8 @@ int parseWords(string line)
             {
                 identifyLetters(word);
                 wordCount++;
-                isWord=false;
-                word="";
+                isWord = false;
+                word = "";
             }
         }
         if(i == stringLength-1)
@@ -82,8 +82,8 @@ int parseWords(string line)
             {
                 identifyLetters(word);
                 wordCount++;
-                isWord=false;
-                word="";
+                isWord = false;
+                word = "";
             }
 
 
@@ -99,7 +99,7 @@ int main()
     cout<<"Please enter a string:\n";
     getline(cin,line);
     void initialiseLettersArray();
-    int wordCount= parseWords(line);
+    int wordCount = parseWords(line);
     cout<<wordCount<< " words\n";
     printLetters();
     return 0;

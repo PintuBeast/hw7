@@ -3,7 +3,7 @@
 using namespace std;
 
 
-const int BIG_A=65,SMALL_A=97, SMALL_Z=97,BIG_Z=122, NUM_ALPHABETS=26;
+const int BIG_A = 65, SMALL_A = 97, SMALL_Z = 97, BIG_Z = 122, NUM_ALPHABETS = 26;
 int small[NUM_ALPHABETS], caps[NUM_ALPHABETS];
 
 void getLetterDistribution(string line, int letterArray[]);
@@ -12,16 +12,16 @@ void getLetterDistribution(string line, int letterArray[]);
 bool isAnagram(string line1, string line2);
 bool isAnagram(string line1, string line2)
 {
-    bool isAnagram=true;
+    bool isAnagram = true;
     int letterArray1[NUM_ALPHABETS],letterArray2[NUM_ALPHABETS];
     getLetterDistribution(line1,letterArray1);
     getLetterDistribution(line2,letterArray2);
 
-    for(int i =0;i<NUM_ALPHABETS;i++)
+    for(int i = 0 ; i < NUM_ALPHABETS ; i++)
     {
-        if(letterArray1[i]!=letterArray2[i])
+        if(letterArray1[i] != letterArray2[i])
         {
-            isAnagram=false;
+            isAnagram = false;
             break;
         }
 
@@ -37,9 +37,9 @@ void getLetterDistribution(string line, int letterArray[])
 {
     initialiseLettersArray();
     parseWords(line);
-    for(int i=0;i<NUM_ALPHABETS;i++)
+    for(int i = 0 ; i < NUM_ALPHABETS ; i++)
     {
-        letterArray[i]=small[i]+caps[i];
+        letterArray[i] = small[i] + caps[i];
     }
 
 }
@@ -50,10 +50,10 @@ void getLetterDistribution(string line, int letterArray[])
 
 void initialiseLettersArray()
 {
-    for(int i=0;i<NUM_ALPHABETS;i++)
+    for(int i = 0 ; i < NUM_ALPHABETS ; i++)
     {
-        caps[i]=0; 
-        small[i]=0;
+        caps[i] = 0; 
+        small[i] = 0;
     }
 
 }
@@ -61,18 +61,18 @@ void initialiseLettersArray()
 
 void identifyLetters(string word)
 {
-    int wordLength= word.length();
+    int wordLength = word.length();
     int asciVal;
-    for(int i=0;i<wordLength;i++)
+    for(int i = 0 ; i < wordLength ; i++)
     {
         asciVal = (int) word[i];
-        if(asciVal>=97)
+        if(asciVal >= 97)
         {
-            small[asciVal-SMALL_A]++;
+            small[asciVal - SMALL_A]++;
         }
         else
         {
-            caps[asciVal-SMALL_A]++;
+            caps[asciVal - SMALL_A]++;
 
         }
 
@@ -84,17 +84,17 @@ void identifyLetters(string word)
 
 void parseWords(string line)
 {
-    int stringLength= line.length(),wordCount=0;
-    bool isWord=false;
-    string word="";
+    int stringLength = line.length(), wordCount = 0;
+    bool isWord = false;
+    string word = "";
     
     //cout<<"string Length: "<<stringLength<<"\n";
-    for(int i=0;i<stringLength;i++)
+    for(int i = 0 ; i < stringLength ; i++)
     {   int x = (int) line[i];
         if( (x >= BIG_A && x <= BIG_Z) || (x >= SMALL_A && x <= SMALL_Z) )
         {
-            isWord=true;
-            word+=x;
+            isWord = true;
+            word += x;
         }
         else
         {
@@ -102,8 +102,8 @@ void parseWords(string line)
             {
                 identifyLetters(word);
                 wordCount++;
-                isWord=false;
-                word="";
+                isWord = false;
+                word = "";
             }
         }
         if(i == stringLength-1)
@@ -112,8 +112,8 @@ void parseWords(string line)
             {
                 identifyLetters(word);
                 wordCount++;
-                isWord=false;
-                word="";
+                isWord = false;
+                word = "";
             }
 
 

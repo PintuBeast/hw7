@@ -128,24 +128,29 @@ int main()
     
     int arr[]={3,-1,-3,0,6,4};
     int* outArray1 = getPosNums1(arr, ARR_SIZE, outPosArrSize);
+    cout<<"########  GetPosNum1 output  #######\n";
     printArray(outArray1,outPosArrSize);
     
     cout<<"\n";
 
     int* outArray2 = getPosNums2(arr, ARR_SIZE, &outPosArrSize);
+    cout<<"########  GetPosNum2 output  #######\n";
     printArray(outArray2,outPosArrSize);
 
     cout<<"\n";
 
     int* outPosArr;
     getPosNums3(arr, ARR_SIZE, outPosArr, outPosArrSize);
+    cout<<"########  GetPosNum3 output  #######\n";
     printArray(outPosArr,outPosArrSize);
 
     cout<<"\n";
     
     int* outPosArrPtr;
+    cout<<"########  GetPosNum4 output  #######\n";
     getPosNums4(arr, ARR_SIZE, &outPosArrPtr, &outPosArrSize);
-    printArray(outPosArrPtr,outPosArrSize);
+    
+    
 
     return 0;
 }

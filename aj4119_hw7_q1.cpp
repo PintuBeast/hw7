@@ -44,7 +44,7 @@ void printLetters()
     {
         if(( small[i] + caps[i] ) > 0)
         {
-            cout<< (char) (SMALL_A + i) <<"\t"<< (small[i] + caps[i])<< "\n";
+            cout<< (small[i] + caps[i]) <<"\t"<< (char) (SMALL_A + i)<< "\n";
         }
     }
 

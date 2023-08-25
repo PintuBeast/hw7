@@ -84,6 +84,7 @@ void getPosNums3(int* arr, int arrSize, int*& outPosArr, int& outPosArrSize)
 
 }
 
+
 void getPosNums4(int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePtr)
 {
     *outPosArrSizePtr = 0;
@@ -91,10 +92,10 @@ void getPosNums4(int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePt
     {
         if(arr[i] > 0)
         {
-           *(outPosArrSizePtr)++;
+           *outPosArrSizePtr += 1;
         }
     }
-    outPosArrPtr = new int*;
+  
     *outPosArrPtr = new int[*outPosArrSizePtr];
     
     int positiveCounter = 0;
@@ -102,12 +103,16 @@ void getPosNums4(int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePt
     {
         if(arr[i] > 0)
         {
-            *(*outPosArrPtr + (positiveCounter++)) = arr[i];
-            cout<<*(*outPosArrPtr + (positiveCounter - 1))<<" ";
-          
+            *(*outPosArrPtr + positiveCounter) = arr[i];
+              positiveCounter++;
         }
-    }    
+    } 
+    
 }
+
+
+
+
 
 void printArray(int* ,int);
 
@@ -147,9 +152,12 @@ int main()
     cout<<"\n";
     
     int* outPosArrPtr;
+    int outPosArrSize4=0;
     cout<<"########  GetPosNum4 output  #######\n";
-    getPosNums4(arr, ARR_SIZE, &outPosArrPtr, &outPosArrSize);
+    getPosNums4(arr, ARR_SIZE, &outPosArrPtr, &outPosArrSize4);
+
     
+    printArray(outPosArrPtr,outPosArrSize);
     
 
     return 0;

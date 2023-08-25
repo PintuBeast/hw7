@@ -2,9 +2,9 @@
 #include<vector>
 using namespace std;
 
-int arraySearch(int[], int );
+int arraySearch(int[], int, int );
 
-int arraySearch(int arr[], int arrSize)
+int arraySearch(int arr[], int arrSize,int element)
 {
 
 }
@@ -47,7 +47,7 @@ int* createArray(string combinedString,int& numIntegers)
        // cout<<"start:"<<wordStartPosition<<" End:"<<wordEndPosition<<" spacePos: "<<spacePosition<<"\n";
         if(wordEndPosition>wordStartPosition)
         {
-            cout<<"b "<<combinedString.substr(wordStartPosition,wordEndPosition-wordStartPosition)<<"\n";
+           // cout<<"b "<<combinedString.substr(wordStartPosition,wordEndPosition-wordStartPosition)<<"\n";
             intArray[wordCounter++]=stoi(combinedString.substr(wordStartPosition,wordEndPosition-wordStartPosition));
         }
         
@@ -79,6 +79,12 @@ int main()
     {
         cout<<arr[i]<<"\n";
     }
+
+    int elementToSearch;
+
+    cout<<"Please enter a number you want to search:\n";
+    cin>>elementToSearch;
+
 
 
 
